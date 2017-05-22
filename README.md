@@ -1,2 +1,2 @@
-# pallet_box
+# Pallet Box
 Pallet design optimized automation system
