@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class Pallet():
+class Pallet(object):
 
     def __init__(self, L, W):
         self.L = np.int(L)
@@ -29,7 +29,7 @@ class Pallet():
         return np.array([[0, 0], [0, self.L], [self.L, self.W], [0, self.W]])
 
 
-class Box():
+class Box(object):
 
     def __init__(self, dim_x, dim_y, l0, w0, orientation):
         self.l0 = np.int(l0)
