@@ -36,7 +36,8 @@ class Box(object):
         self.w0 = np.int(w0)
 
         self.orientation = np.int(orientation)
-        if (np.equal(self.orientation, 1):
+
+        if (np.equal(self.orientation, 1)):
             self.x = np.float(dim_x)
             self.y = np.float(dim_y)
         else:
