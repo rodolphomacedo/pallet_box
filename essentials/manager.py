@@ -75,7 +75,7 @@ class Grid(object):
 
 class Box(object):
 
-    def __init__(self, boxsize, grid, orientation=1):
+    def __init__(self, boxsize, grid, orientation=-1):
         
         dim_x = boxsize.getDimX()
         dim_y = boxsize.getDimY()
@@ -88,7 +88,13 @@ class Box(object):
 
         self.dimX = np.int(dim_x)
         self.dimY = np.int(dim_y)
-        self.orientation = np.int(orientation)
+       
+        # Defining the box orientation
+        if (orientation != -1):
+            self.orientation = np.int(orientation)
+        else:
+            self.orientation = np.random.randint(0,2)
+
 
         if (np.equal(self.orientation, 1)):
             self.x = np.float(dim_x)
@@ -103,6 +109,9 @@ class Box(object):
                         [np.sum([self.l0, self.x]), np.sum([self.w0, self.y])],
                         [self.l0, np.sum([self.w0, self.y])]
                     ])
+
+    def __str__(self):
+        return '[%s,%s,%s]' %(self.l0, self.w0, self.orientation)
 
     def dim_x(self):
         return self.dimX
