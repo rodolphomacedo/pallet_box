@@ -1,5 +1,5 @@
 import numpy as np
-
+from fractions import gcd
 
 class Pallet(object):
 
@@ -29,12 +29,65 @@ class Pallet(object):
         return np.array([[0, 0], [0, self.L], [self.L, self.W], [0, self.W]])
 
 
+class BoxSize(object):
+    def __init__(self, x, y):
+        self.dimX = np.int(x)
+        self.dimY = np.int(y)
+    
+    def getDimX(self):
+        return self.dimX
+
+    def getDimY(self):
+        return self.dimY
+
+
+class Grid(object):
+    
+    def __init__(self, pallet, boxsize):
+        self.palletL = pallet.L
+        self.palletW = pallet.W
+        self.mdcPallet = gcd(pallet.L, pallet.W)
+        self.mdcBoxSize  = gcd(boxsize.getDimX(),boxsize.getDimY())
+        self.mdc = gcd(self.mdcPallet, self.mdcBoxSize)
+
+    def getMdc(self):
+        return self.mdc
+
+    def getGridL(self):
+        self.gridL = np.arange(0, self.palletL, self.getMdc())
+        return self.gridL
+
+    def getGridW(self):
+        self.gridW = np.arange(0, self.palletW, self.getMdc())
+        return self.gridW
+   
+    def getLengthGridW(self):
+        self.lengthGridW = np.size(np.arange(0, self.palletW, self.getMdc()))
+        return self.lengthGridW
+
+    def getLengthGridL(self):
+        self.lengthGridL = np.size(np.arange(0, self.palletL, self.getMdc()))
+        return self.lengthGridL
+
+
+
+
+
 class Box(object):
 
-    def __init__(self, dim_x, dim_y, l0, w0, orientation):
-        self.l0 = np.int(l0)
-        self.w0 = np.int(w0)
+    def __init__(self, boxsize, grid, orientation=1):
+        
+        dim_x = boxsize.getDimX()
+        dim_y = boxsize.getDimY()
+        
+        randL = np.random.randint(0,grid.getLengthGridL())
+        randW = np.random.randint(0,grid.getLengthGridW())
 
+        self.l0 = grid.getGridL()[randL]
+        self.w0 = grid.getGridW()[randW]
+
+        self.dimX = np.int(dim_x)
+        self.dimY = np.int(dim_y)
         self.orientation = np.int(orientation)
 
         if (np.equal(self.orientation, 1)):
@@ -51,6 +104,15 @@ class Box(object):
                         [self.l0, np.sum([self.w0, self.y])]
                     ])
 
+    def dim_x(self):
+        return self.dimX
+
+    def dim_y(self):
+        return self.dimY
+
+    def orientation(self):
+        return self.orientation
+        
     def l(self):
         return self.l0
 
@@ -71,3 +133,18 @@ class Box(object):
 
     def x3(self):
         return self.pos[3]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
