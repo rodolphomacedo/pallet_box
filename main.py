@@ -1,7 +1,6 @@
 import numpy as np
-from essentials.manager import Pallet, Box, Grid, BoxSize
+from essentials.manager import Pallet, Box, Grid, BoxSize, insertBoxs
 from control.inspection import has_intersection_among_pallet_box
-#from control.inspection import has_intersection_between_boxs
 from control.inspection import has_any_intersection
 from control.printer import printHtmlFile, printBoxs
 from fractions import gcd
@@ -26,13 +25,14 @@ print 'Grade em L: ', grid.getGridL()
 print '\n'
 print 'Garde em W: ', grid.getGridW()
 
-
+"""
 boxs = list()
 for k in range(1500):
     box = Box(boxsize, grid)
     if not has_intersection_among_pallet_box(pallet, box):
         if not has_any_intersection(box, boxs):
             boxs.append(box)
-
+"""
+boxs = insertBoxs(pallet, boxsize, grid)
 printBoxs(boxs, onlyQuantity=True)     
 printHtmlFile(pallet, boxsize, boxs)

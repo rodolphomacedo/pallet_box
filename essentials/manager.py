@@ -1,5 +1,9 @@
 import numpy as np
 from fractions import gcd
+from control.inspection import has_intersection_among_pallet_box
+from control.inspection import has_any_intersection
+
+
 
 class Pallet(object):
 
@@ -144,6 +148,15 @@ class Box(object):
         return self.pos[3]
 
 
+def insertBoxs(pallet, boxsize, grid):
+    boxs = list()
+    for k in range(1500):
+        box = Box(boxsize, grid)
+        if not has_intersection_among_pallet_box(pallet, box):
+            if not has_any_intersection(box, boxs):
+                boxs.append(box)
+    return boxs
+                                        
 
 
 
