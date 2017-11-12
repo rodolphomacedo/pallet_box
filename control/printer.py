@@ -1,4 +1,4 @@
-from numpy import random 
+from numpy import random, float64
 
 def printHtml(pallet, boxsize, boxs):
     
@@ -68,4 +68,10 @@ def printBoxs(boxs, onlyQuantity=False):
             print '|  Ponto x3: ', box.x3()
     else:
         print 'Quantidade de caixas: ', len(boxs)
+
+def printlayoutEfficiency(boxsize, grid):
+    mdc = float64(grid.getMdc())
+    minSuport = min(boxsize.getDimX(), boxsize.getDimY())
+    print 'Eficiencia do layout: %3.0f%%' %((mdc*100.0) / minSuport)
+
 

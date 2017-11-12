@@ -32,6 +32,8 @@ class Pallet(object):
     def pos(self):
         return np.array([[0, 0], [0, self.L], [self.L, self.W], [0, self.W]])
 
+    def getArea(self):
+        return self.L * self.W
 
 class BoxSize(object):
     def __init__(self, x, y):
@@ -43,6 +45,9 @@ class BoxSize(object):
 
     def getDimY(self):
         return self.dimY
+
+    def getArea(self):
+        return self.dimX * self.dimY
 
 
 class Grid(object):
@@ -157,16 +162,4 @@ def insertBoxs(pallet, boxsize, grid):
                 boxs.append(box)
     return boxs
                                         
-
-
-
-
-
-
-
-
-
-
-
-
 
