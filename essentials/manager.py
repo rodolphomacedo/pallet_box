@@ -84,19 +84,52 @@ class Grid(object):
 
 class Box(object):
 
-    def __init__(self, boxsize, grid, orientation=-1):
+    def __init__(self, boxsize, grid, orientation=-1, listBox=None):
         
-        dim_x = boxsize.getDimX()
-        dim_y = boxsize.getDimY()
-        
-        randL = np.random.randint(0,grid.getLengthGridL())
-        randW = np.random.randint(0,grid.getLengthGridW())
+        if listBox == None:
+            dim_x = boxsize.getDimX()
+            dim_y = boxsize.getDimY()
+            
+            randL = np.random.randint(0,grid.getLengthGridL())
+            randW = np.random.randint(0,grid.getLengthGridW())
 
-        self.l0 = grid.getGridL()[randL]
-        self.w0 = grid.getGridW()[randW]
+            self.l0 = grid.getGridL()[randL]
+            self.w0 = grid.getGridW()[randW]
 
-        self.dimX = np.int(dim_x)
-        self.dimY = np.int(dim_y)
+            self.dimX = np.int(dim_x)
+            self.dimY = np.int(dim_y)
+
+        # Insert box next to others boxs
+        else:
+            dim_x = boxsize.getDimX()
+            dim_y = boxsize.getDimY()
+          
+
+            # Choosing a box Randomly
+            boxSide = listBox[np.random.randint(len(listBox))]
+
+
+            # Choosing a box vertex as initial point of new box
+            # Choose vertex
+            vertex = np.random.randint(4)
+            if vertex == 0:
+                positionNewBox = boxSide.x0()
+
+            elif vertex == 1:
+                positionNewBox = boxSide.x1()
+           
+            elif vertex == 2:
+                positionNewBox = boxSide.x2()
+            
+            elif vertex == 3:
+                positionNewBox = boxSide.x3()
+            
+            self.l0 = positionNewBox[0] #grid.getGridL()[randL]
+            self.w0 = positionNewBox[1] #grid.getGridW()[randW]
+
+            self.dimX = np.int(dim_x)
+            self.dimY = np.int(dim_y)
+
        
         # Defining the box orientation
         if (orientation != -1):
@@ -153,13 +186,12 @@ class Box(object):
         return self.pos[3]
 
 
-def insertBoxs(pallet, boxsize, grid):
+def insertBoxs(pallet, boxsize, grid, qtd = 1000, listBox=None):
     boxs = list()
-    for k in range(1500):
-        box = Box(boxsize, grid)
+    for k in range(int(qtd)):
+        box = Box(boxsize, grid, listBox=listBox)
         if not has_intersection_among_pallet_box(pallet, box):
             if not has_any_intersection(box, boxs):
                 boxs.append(box)
     return boxs
                                         
-
