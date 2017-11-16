@@ -1,14 +1,15 @@
 from essentials.manager import Pallet, Grid, BoxSize, insertBoxs
 from control.printer import printHtmlFile, printBoxs, printlayoutEfficiency
-from essentials.optimizer import efficiency, deleteRandomBoxs, rank
+from essentials.optimizer import efficiency, rank, deleteRandomBoxs
 from fractions import gcd
 import numpy as np
 
 # Measured in millimeters
-#palletMeasure = (1000, 1200)
-#pallet = Pallet(1000/gcd(400, 200), 1200/gcd(400,200))
-gridx = 200
-gridy = 150
+gridx = 240
+gridy = 180
+
+#gridx = 400
+#gridy = 200
 
 palX = 1000
 palY = 1200
@@ -17,74 +18,74 @@ def arruma(L, W, l, w):
     mdc = gcd(l,w)
     La = int(L/mdc)
     Wa = int(W/mdc)
+    print "La: ", La*mdc
+    print "Wa: ", Wa*mdc
     return [La*mdc, Wa*mdc]
 
 a ,b = arruma(palX, palY, gridx, gridy)
+#pallet = Pallet(a, b)
 
-pallet = Pallet(a, b)
+pallet = Pallet(palX, palY)
+
 boxsize = BoxSize(gridx, gridy)
 
 grid = Grid(pallet, boxsize)
 
-print grid.getMdc()
+print 'MDC: ', grid.getMdc()
 
 rankingList = list()
 
-# insert box in pallet
-#boxs = insertBoxs(pallet, boxsize, grid)
+boxs = list()
 
-#printBoxs(boxs, onlyQuantity=True)     
-#deleteRandomBoxs(boxs, 50)
-#printBoxs(boxs, onlyQuantity=True)     
+for i in range(1):
+    while len(boxs) == 0:
+        boxs = insertBoxs(pallet, boxsize, grid, qtd=1)
 
-for i in range(10):
-    boxs = insertBoxs(pallet, boxsize, grid)
     efficiencyBox = efficiency(pallet, boxsize, boxs)
-    rankingList = rank(pallet, boxsize, boxs, rankingList)
-    efficiencyBox = 0
-    newsBoxs = ''
-    efficiencyNewsBox = 0
+    print 'Quantidade na rodada inicial: ', len(boxs) 
+    newBoxs = list()
+    bestBoxs = boxs
+    temp = 1000.0
+    decay = 0.5
+    steps = 50
+    percentualEffi = False
+    #for j in range(500):
+    while (temp >= 1):
 
-    for j in range(1000):
-        decay = ((1000.0) - j)/(1000.0)
-        #decay = 1.00/(j+1)
+        efficiencyNewsBox = efficiency(pallet, boxsize, newBoxs, percentual=percentualEffi)
+        for step in range(steps):
+            newBoxs = insertBoxs(pallet, boxsize, grid, qtd=5, listBox=newBoxs)
 
-        randDestroy = np.random.rand() * decay 
-        if randDestroy <= 0.10:
-            randDestroy = 0.25
+            if efficiency(pallet, boxsize, newBoxs, percentual=percentualEffi) > efficiencyNewsBox: 
+                break
+            if step % 15 == 0:
+                #newBoxs = deleteRandomBoxs(newBoxs, percentual=0.120*np.random.rand())
+                newBoxs = deleteRandomBoxs(newBoxs, qtd=1)
         
-        newsBoxs = deleteRandomBoxs(boxs, percentual=randDestroy)
+        efficiencyNewsBox = efficiency(pallet, boxsize, newBoxs, percentual=percentualEffi)
        
-        if np.random.rand() > 0.5:
-            newsBoxs = insertBoxs(pallet, boxsize, grid, listBox=boxs)
-        else:
-            newsBoxs = insertBoxs(pallet, boxsize, grid)
+        p = np.exp((efficiencyNewsBox-efficiencyBox)/temp)
+        print '--------------------------------------------------'
+        print 'probabilidade: \t', p 
+        if efficiencyNewsBox > efficiencyBox or np.random.rand() < p:
+            boxs = newBoxs
+            efficiencyBox = efficiencyNewsBox
+
         
-        efficiencyNewsBox = efficiency(pallet, boxsize, newsBoxs)
+        temp = temp - decay
     
-        if efficiencyNewsBox >= efficiencyBox:
-            boxs = newsBoxs
-            efficiencyBox = efficiencyNewsBox
+        if efficiency(pallet, boxsize, boxs, percentual=percentualEffi) > efficiency(pallet, boxsize, bestBoxs, percentual=percentualEffi):
+            bestBox = boxs
+            rankingList = rank(pallet, boxsize, boxs, rankingList)
         
-        elif decay < np.random.rand():
-            boxs = newsBoxs
-            efficiencyBox = efficiencyNewsBox
-        
-    rankingList = rank(pallet, boxsize, boxs, rankingList)
-    #print 'Melhor Configuracao: ',len(rankingList[0][1]),' caixas com' ,rankingList[0][0] ,'% \t|\t',
-    #print 'Configuracao atual: ',len(newsBoxs),' caixas com- Eficiencia atual: ', efficiencyBox, '%'
-
-    print 'Melhor Configuracao: ',len(rankingList[0][1]),' caixas \t|\t',
-    print 'Configuracao atual: ',len(newsBoxs),' caixas'
-
-
-
-# Print datas 
-#print 'Eficiencia da Paletizacao: ',efficiency(pallet, boxsize, boxs)
-#printlayoutEfficiency(boxsize, grid)
-
-
+            print 'Max quantidade de caixas: ', rankingList[0][0]
+            printHtmlFile(pallet, boxsize, bestBox)
+            print 'Temperatura: \t',temp
+            print 'Eficiencia: \t', efficiency(pallet, boxsize, boxs, percentual=percentualEffi) 
 
 # Generate html layout file
-printHtmlFile(pallet, boxsize,rankingList[0][1])
-print 'Acesse: file:///home/rodolpho/Projects/pallet_box/paletes.html'
+rankingFinal = rankingList[0]
+print 'Final: ', rankingFinal
+print '\nTotal de caixas no palete: ', rankingFinal[0]
+printHtmlFile(pallet, boxsize,rankingFinal[1])
+print '\n\nAcesse no browser: file:///home/rodolpho/Projects/pallet_box/paletes.html'

@@ -6,7 +6,9 @@ def printHtml(pallet, boxsize, boxs):
 
     header = """ 
     <!DOCTYPE html>
-    <meta charset="utf-8">
+    <head> 
+        <meta http-equiv="refresh" content="1;URL=file:///home/rodolpho/Projects/pallet_box/paletes.html"> 
+    </head>
 
     <body>
     <script src="//d3js.org/d3.v3.min.js"></script>

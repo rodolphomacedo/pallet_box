@@ -9,16 +9,17 @@ def efficiency(pallet, boxsize, boxs, percentual=False):
     else:
         return len(boxs)
 
-def deleteRandomBoxs(boxs, percentual=0.0):
-    if percentual == 0.0:
-        return boxs
-    else:
+def deleteRandomBoxs(boxs, percentual=False, qtd=False):
+    if percentual > 0.0:
         qtdDelete = int(len(boxs)*percentual)
-        for _ in range(qtdDelete):
-            if (len(boxs) != 0):
-                boxs.pop(np.random.randint(len(boxs)))
-            else:
-                return boxs 
+    else:
+        qtdDelete = qtd
+
+    for _ in range(qtdDelete):
+        if (len(boxs) != 0):
+            boxs.pop(np.random.randint(len(boxs)))
+        else:
+            return boxs 
     return boxs
 
 
@@ -28,3 +29,5 @@ def rank(pallet, boxsize, boxs, rankingList):
     
     rankingList.append([efficiencyBoxs, boxs])
     return sorted(rankingList, key=lambda x: x[0], reverse=True)
+
+
