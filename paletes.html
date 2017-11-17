@@ -1,41 +1,98 @@
  
     <!DOCTYPE html>
     <head> 
-        <meta http-equiv="refresh" content="1;URL=file:///home/rodolpho/Projects/pallet_box/paletes.html"> 
+        <meta http-equiv="refresh" content="1;URL=file:///home/rodolpho/Projects/pallet_box/paletes.html">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
     </head>
 
     <body>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <svg width="2000" height="2000">
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">
+            <img src="brand.jpg" width="30" height="30" alt="">
+            <b>AM-Tech</b>
+        </a>
+    </nav>
+    <div class="container">
+    <div class="jumbotron">
+        <h1 class="display-2">Pallet Desing</h1>
+        <h5><i>Optimization System</i></h5>
+    </div>
 
+    <b>Optimization Progress</b>: 5% <br/> <div class="progress"> <div class="progress-bar" role="progressbar" style="width:5.275%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>  </div>
+    <br /><hr />
+    <div class="row">
+    <div class="col-md-4">
+    <h3>Dashboard:</h3>
+    <p><b>Palet size</b>: 500  <i>vs</i>  390</p>
+    <p><b>Box size</b>: 40 <i>vs</i> 90</p>
+    <hr />
+    <p><b>Boxs on the pallet currently</b>: <i>48</i></p>
+    <hr />
+    </div>
+
+    <div class="col-md-8">
+    <svg align="center" width="1200" height="1200" >
     
     <!-- Insert layout pallet -->
-    <rect x="0" y="0" width='1200' height='1000' fill="black" />
+    <rect x="0" y="0" width='392' height='502' fill="DimGray" rx="10" ry="10" style="stroke: black; stroke-width:5; opacity:1.0" />
 
-    <rect x='760.0' y='360.0' width='240' height='180' fill='red' />
-                    <rect x='400.0' y='480.0' width='180' height='240' fill='green' />
-                    <rect x='520.0' y='720.0' width='240' height='180' fill='magenta' />
-                    <rect x='580.0' y='0.0' width='180' height='240' fill='magenta' />
-                    <rect x='760.0' y='600.0' width='240' height='180' fill='DarkBlue ' />
-                    <rect x='220.0' y='240.0' width='180' height='240' fill='yellow' />
-                    <rect x='1000.0' y='300.0' width='180' height='240' fill='Olive' />
-                    <rect x='400.0' y='0.0' width='180' height='240' fill='DeepPink ' />
-                    <rect x='40.0' y='720.0' width='180' height='240' fill='red' />
-                    <rect x='1000.0' y='600.0' width='180' height='240' fill='DarkBlue ' />
-                    <rect x='220.0' y='720.0' width='240' height='180' fill='magenta' />
-                    <rect x='760.0' y='0.0' width='240' height='180' fill='Olive' />
-                    <rect x='220.0' y='0.0' width='180' height='240' fill='green' />
-                    <rect x='40.0' y='0.0' width='180' height='240' fill='green' />
-                    <rect x='580.0' y='240.0' width='180' height='240' fill='DeepPink ' />
-                    <rect x='40.0' y='240.0' width='180' height='240' fill='yellow' />
-                    <rect x='1000.0' y='0.0' width='180' height='240' fill='aqua' />
-                    <rect x='40.0' y='480.0' width='180' height='240' fill='magenta' />
-                    <rect x='400.0' y='240.0' width='180' height='240' fill='DarkCyan' />
-                    <rect x='220.0' y='480.0' width='180' height='240' fill='Olive' />
-                    <rect x='580.0' y='480.0' width='180' height='240' fill='DarkBlue ' />
+    <rect x='292.0' y='101.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='42.0' y='231.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='212.0' y='11.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='232.0' y='181.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='262.0' y='371.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='272.0' y='141.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='2.0' y='231.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='312.0' y='141.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='162.0' y='101.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='42.0' y='141.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='302.0' y='411.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='292.0' y='61.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='252.0' y='331.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='302.0' y='11.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='32.0' y='1.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='2.0' y='141.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='352.0' y='231.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='82.0' y='321.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='2.0' y='411.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='2.0' y='51.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='212.0' y='281.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='42.0' y='51.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='82.0' y='141.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='172.0' y='281.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='252.0' y='51.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='122.0' y='61.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='302.0' y='451.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='352.0' y='141.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='122.0' y='151.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='352.0' y='321.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='172.0' y='371.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='82.0' y='231.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='172.0' y='461.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='82.0' y='421.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='42.0' y='321.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='122.0' y='1.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='42.0' y='411.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='162.0' y='61.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='122.0' y='321.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='82.0' y='51.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='82.0' y='461.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='272.0' y='231.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='312.0' y='231.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='262.0' y='411.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='122.0' y='191.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='2.0' y='321.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='122.0' y='231.0' width='90' height='40' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
+                    <rect x='212.0' y='371.0' width='40' height='90' fill='Gainsboro' rx="5" ry="5" style="stroke: black; stroke-width:2; opacity:0.95" />
                       
     </svg> 
-     
+     </div>
+     </div>
+     </div>
      </body> 
      </html> 
       
