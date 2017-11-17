@@ -39,8 +39,8 @@ def printHtml(pallet, boxsize, boxs, progressBar=None):
     <div class="row">
     <div class="col-md-4">
     <h3>Dashboard:</h3>
-    <p><b>Palet size</b>: %s  <i>vs</i>  %s</p>
-    <p><b>Box size</b>: %s <i>vs</i> %s</p>
+    <p><b>Palet size</b>: %s  <i>x</i>  %s</p>
+    <p><b>Box size</b>: %s <i>x</i> %s</p>
     <hr />
     <p><b>Boxs on the pallet currently</b>: <i>%s</i></p>
     <hr />
@@ -55,7 +55,7 @@ def printHtml(pallet, boxsize, boxs, progressBar=None):
     <!-- Insert layout pallet -->
     <rect x="0" y="0" width='%d' height='%d' fill="DimGray" rx="10" ry="10" style="stroke: black; stroke-width:5; opacity:1.0" />
 
-    """%(pallet.W +2, pallet.L+2)
+    """%(pallet.W +2, pallet.L+1)
     
     footer = """  
     </svg> 
