@@ -24,7 +24,7 @@ def printHtml(pallet, boxsize, boxs, progressBar=None):
     </nav>
     <div class="container">
     <div class="jumbotron">
-        <h1 class="display-2">Pallet Desing</h1>
+        <h1 class="display-2">Pallet Design</h1>
         <h5><i>Optimization System</i></h5>
     </div>
 

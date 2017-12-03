@@ -1,5 +1,6 @@
 # Access the browser: file:///home/user/Projects/pallet_box/paletes.html
 
+# ------------------------------------------------------------
 # *** Inputs to pallet_box ***
 # Measured in millimeters 
 
@@ -8,15 +9,15 @@ PALLET_WIDTH    = 1000      # PBR: 1000
 PALLET_LENGTH   = 1200      # PBR: 1200
 
 # Input the box size
-BOX_WIDTH       = 240
-BOX_LENGTH      = 180
-
+BOX_WIDTH       = 250
+BOX_LENGTH      = 200
 
 # Loosen size
 #   ATENTION: Allow the boxes to remain as few millimeters off the pallet
 #       Default use: 0
 LOOSEN = 0
 
+# ------------------------------------------------------------
 # *** Inputs the general setup ***
 TEMPERATURE_INITIAL = 20.0
 DECAY_INITIAL = 0.005

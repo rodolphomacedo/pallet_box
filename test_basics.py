@@ -4,8 +4,8 @@ from control.inspection import has_intersection_among_pallet_box
 from control.inspection import has_intersection_between_boxs
 
 # Objects
-p = Pallet(100, 120)
-b1 = Box(50, 50, 10, 10, 1)
+#p = Pallet(100, 120)
+#b1 = Box(50, 50, 10, 10, 1)
 b2 = Box(50, 50, 80, 80, 1)
 b3 = Box(50, 50, 40, 40, 1)
 
