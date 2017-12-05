@@ -9,8 +9,8 @@ PALLET_WIDTH    = 1000      # PBR: 1000
 PALLET_LENGTH   = 1200      # PBR: 1200
 
 # Input the box size
-BOX_WIDTH       = 250
-BOX_LENGTH      = 200
+BOX_WIDTH       = 245
+BOX_LENGTH      = 95
 
 # Loosen size
 #   ATENTION: Allow the boxes to remain as few millimeters off the pallet
@@ -49,12 +49,7 @@ BREAKINGBESTBOXS = -1
 # ------------------------------------------------------------
 # Measured in millimeters
 
-# Medidas Finni - 26 caixas
-#gridx = 240
-#gridy = 180
-#palX = 1000
-#palY = 1200
-
+# === Modelos de Teste ===
 # Hello world - 15 caixas
 #gridx = 400
 #gridy = 200
@@ -66,5 +61,54 @@ BREAKINGBESTBOXS = -1
 #gridy = 160
 #palX = 1000
 #palY = 1200
+
+# === Modelos Alimentacao ===
+# Medidas Finni - 26 caixas
+#gridx = 240
+#gridy = 180
+#palX = 1000
+#palY = 1200
+
+# === Modelos Racao Animal ======
+# DogChow (Cx Verde) e CatChow (Cx Verde) - 48 caixas
+#gridx = 95
+#gridy = 245
+#palX = 1000
+#palY = 1200
+
+# Friskies Purina (Cx Amarela) - 48 Caixas
+#gridx = 95
+#gridy = 245
+#palX = 1000
+#palY = 1200
+
+# Sabor e Vida (Cx Verde Escura) - 30 Caixas
+#gridx = 305
+#gridy = 102
+#palX = 1000
+#palY = 1200
+
+# Whiskas Petiscos (Papelao) - 16 Caixas
+#gridx = 240
+#gridy = 290
+#palX = 1000
+#palY = 1200
+
+#Doguitos Purina (Cx Vermelha/Rosa) - 21 Caixas
+#gridx = 125
+#gridy = 385
+#palX = 1000
+#palY = 1200
+
+
+
+
+
+
+
+
+
+
+
 
 
